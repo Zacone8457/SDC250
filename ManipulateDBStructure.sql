@@ -1,7 +1,12 @@
 --The script is looking a little different from pics because I didn't want to spend time copying data (it does the same thing).
+--Dependencies
+
 -- 1
 ALTER TABLE PRODUCTLIST
-ADD price number(6,2), description varchar(250);
+ADD price number(6,2);
+
+ALTER TABLE PRODUCTLIST
+ADD description varchar(250);
 
 UPDATE productlist
 SET price = 22.22, description = 'The next big indie game of the year!'
@@ -58,7 +63,7 @@ CREATE TABLE CHATLOG(
     receiverid number(3), FOREIGN KEY(receiverid) REFERENCES USERBASE(userid),
     senderid number(3), FOREIGN KEY(senderid) REFERENCES USERBASE(userid),
     datesent date,
-    content varchar2(250),
+    content varchar2(250)
 );
 
 INSERT ALL
@@ -71,7 +76,8 @@ INSERT ALL
     INTO CHATLOG VALUES(7, 107, 108, '2/12/2026', 'Hey')
     INTO CHATLOG VALUES(8, 108, 109, '2/12/2026', 'Hallo')
     INTO CHATLOG VALUES(9, 109, 110, '2/12/2026', 'Hallo')
-    INTO CHATLOG VALUES(10, 110, 101, '2/12/2026', 'Merry');
+    INTO CHATLOG VALUES(10, 110, 101, '2/12/2026', 'Merry')
+    SELECT 1 FROM dual;
 
 -- 3
 CREATE TABLE FRIENDSLIST(
@@ -90,7 +96,8 @@ INSERT ALL
     INTO FRIENDSLIST VALUES(107, 108)
     INTO FRIENDSLIST VALUES(108, 109)
     INTO FRIENDSLIST VALUES(109, 110)
-    INTO FRIENDSLIST VALUES(110, 101);
+    INTO FRIENDSLIST VALUES(110, 101)
+    SELECT 1 FROM dual;
 
 -- 4
 CREATE TABLE WISHLIST(
@@ -108,9 +115,10 @@ INSERT ALL
     INTO WISHLIST VALUES(105, 'GAME4', 3)
     INTO WISHLIST VALUES(106, 'GAME5', 1)
     INTO WISHLIST VALUES(107, 'GAME6', 2)
-    INTO WISHLIST VALUES(108, 'Game6', 3)
-    INTO WISHLIST VALUES(109, 'Game7', 4)
-    INTO WISHLIST VALUES(110, 'Game8', 1);
+    INTO WISHLIST VALUES(108, 'GAME6', 3)
+    INTO WISHLIST VALUES(109, 'GAME7', 4)
+    INTO WISHLIST VALUES(110, 'GAME8', 1)
+    SELECT 1 FROM dual;
 
 -- 5
 
@@ -131,12 +139,13 @@ INSERT ALL
     INTO USERPROFILE VALUES(107, 'dogdog.png', null)
     INTO USERPROFILE VALUES(108, 'giraffe.png', 'Long')
     INTO USERPROFILE VALUES(109, 'pineapple.jpg', 'Tropical')
-    INTO USERPROFILE VALUES(110, 'coconut.jpg', 'Tropical');
+    INTO USERPROFILE VALUES(110, 'coconut.jpg', 'Tropical')
+    SELECT 1 FROM dual;
 
 -- 6
 CREATE TABLE SECURITYQUESTION(
     PRIMARY KEY(questionid),
-    questionid number
+    questionid number,
     userid number(3), FOREIGN KEY(userid) REFERENCES USERBASE(userid),
     question varchar2(250),
     answer varchar2(250)
@@ -152,7 +161,8 @@ INSERT ALL
     INTO SECURITYQUESTION VALUES(7, 107, 'When is the patch?', null)
     INTO SECURITYQUESTION VALUES(8, 108, 'Is my account safe?', null)
     INTO SECURITYQUESTION VALUES(9, 109, 'fkdsloew', null)
-    INTO SECURITYQUESTION VALUES(10, 110, 'Where''s Brian?', 'Next door');
+    INTO SECURITYQUESTION VALUES(10, 110, 'Where''s Brian?', 'Next door')
+    SELECT 1 FROM dual;
     
 -- 7
 CREATE TABLE COMMUNITYRULES(
@@ -173,7 +183,8 @@ INSERT ALL
     INTO COMMUNITYRULES VALUES(7, 'Botting', 'Third-Party automation is prohibited', 400)
     INTO COMMUNITYRULES VALUES(8, 'Griefing', 'Unecessary/Unnatural aggression to other players'' experience', 300)
     INTO COMMUNITYRULES VALUES(9, 'Duping', 'Unnatural duplication of entities', 200)
-    INTO COMMUNITYRULES VALUES(10, 'The Door', null, 9999);
+    INTO COMMUNITYRULES VALUES(10, 'The Door', null, 9999)
+    SELECT 1 FROM dual;
 
 -- 8
 CREATE TABLE INFRACTIONS(
@@ -195,7 +206,8 @@ INSERT ALL
     INTO INFRACTIONS VALUES(7, 107, 8, '2/11/2026', 'TEMP-BAN')
     INTO INFRACTIONS VALUES(8, 108, 5, '2/11/2026', 'ACCOUNT BAN')
     INTO INFRACTIONS VALUES(9, 109, 10, '2/13/2026', null)
-    INTO INFRACTIONS VALUES(10, 110, 1, '2/11/2026', 'WARNING');
+    INTO INFRACTIONS VALUES(10, 110, 1, '2/11/2026', 'WARNING')
+    SELECT 1 FROM dual;
 
 -- 9
 CREATE TABLE USERSUPPORT(
@@ -218,7 +230,8 @@ INSERT ALL
     INTO USERSUPPORT VALUES(7, 'AlexanderKingston@gmail.com', 'I want my account back', '9/12/2026', '9/13/2026', 'DONE')
     INTO USERSUPPORT VALUES(8, 'Smith.Smith2@gmail.com', 'O_O', '9/13/2026', null, 'NEW')
     INTO USERSUPPORT VALUES(9, 'SSmith@gmail.com', 'Everything is purple', '9/12/2026', '9/13/2026', 'NEW')
-    INTO USERSUPPORT VALUES(10, 'EllieJo@gmail.com', 'What just happend?', '9/13/2026', '9/13/2026', 'DONE');
+    INTO USERSUPPORT VALUES(10, 'EllieJo@gmail.com', 'What just happend?', '9/13/2026', '9/13/2026', 'DONE')
+    SELECT 1 FROM dual;
 
 -- 10
 CREATE VIEW securityquestion_view AS
